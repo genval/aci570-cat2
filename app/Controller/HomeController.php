@@ -8,6 +8,35 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class HomeController extends AppController {
+	
+	var $name = 'Users';
+     var $helpers = array('Html','Form');
+     var $components = array('Auth','Session');
+
+     function beforeFilter()
+     {
+         $this->Auth->allow("logout");
+         parent::beforeFilter();
+     }
+
+     function index() { } //Redirects to login()
+function login()
+     {
+         if ($this->Auth->login())
+         {
+             $this->redirect($this->Auth->redirect());
+         } else
+         {
+             $this->Session->setFlash(__('Invalid username or password, try again'));
+         }
+     }
+
+     function logout()
+     {
+         $this->redirect($this->Auth->logout());
+     }
+ }
+ ?>
 
   var $name = 'Users';
   var $helpers = array('Html', 'Form');
@@ -44,6 +73,7 @@ class HomeController extends AppController {
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
     }
+
 
 
 }
