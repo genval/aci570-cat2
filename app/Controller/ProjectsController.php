@@ -14,6 +14,11 @@ class ProjectsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public function index() {
+		$this->Project->recursive = 0;
+		$this->set('projects', $this->Paginator->paginate());
+	}
 
 /**
  * admin_index method

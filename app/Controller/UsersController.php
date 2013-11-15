@@ -14,6 +14,11 @@ class UsersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public function index() {
+		$this->User->recursive = 0;
+		$this->set('users', $this->Paginator->paginate());
+	}
 
 /**
  * admin_index method

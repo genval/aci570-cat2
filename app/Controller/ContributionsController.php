@@ -14,6 +14,11 @@ class ContributionsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+ 	public function index() {
+		$this->Contribution->recursive = 0;
+		$this->set('contributions', $this->Paginator->paginate());
+	}
 
 /**
  * admin_index method

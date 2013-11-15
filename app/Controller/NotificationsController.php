@@ -14,6 +14,11 @@ class NotificationsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public function index() {
+		$this->Notification->recursive = 0;
+		$this->set('notifications', $this->Paginator->paginate());
+	}	
 
 /**
  * admin_index method

@@ -15,6 +15,12 @@ class MessagesController extends AppController {
  */
 	public $components = array('Paginator');
 
+	public function index() {
+		$this->Message->recursive = 0;
+		$this->set('messages', $this->Paginator->paginate());
+	}
+
+
 /**
  * admin_index method
  *

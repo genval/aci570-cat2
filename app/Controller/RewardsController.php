@@ -14,6 +14,11 @@ class RewardsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public function index() {
+		$this->Reward->recursive = 0;
+		$this->set('rewards', $this->Paginator->paginate());
+	}
 
 /**
  * admin_index method
