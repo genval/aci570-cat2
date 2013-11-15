@@ -1,12 +1,21 @@
-/home
+
+<?php
+App::uses('AppController', 'Controller');
+/**
+ * Home Controller
+ *
+ * @property Home $Home
+ * @property PaginatorComponent $Paginator
+ */
+class HomeController extends AppController {
 
 
-/home/login
-
-class Home extends Controller {
-    //...
-
- public $components = array(
+/**
+ * Components
+ *
+ * @var array
+ */
+	public $components = array(
         'Session',
         'Auth' => array(
             'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
@@ -17,8 +26,6 @@ class Home extends Controller {
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
     }
-    //...
+
+
 }
-
-/home/register
-
