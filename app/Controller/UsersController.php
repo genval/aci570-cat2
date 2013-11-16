@@ -8,59 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-var $name = 'Users';
-     var $helpers = array('Html','Form');
-     var $components = array('Auth','Session');
 
-     function beforeFilter()
-     {
-         $this->Auth->allow("logout");
-         parent::beforeFilter();
-     }
-
-     function index() {  //Redirects to login()
-	 function login()
-     {
-         if ($this->Auth->login())
-         {
-             $this->redirect($this->Auth->redirect());
-         } else
-         {
-             $this->Session->setFlash(__('Invalid username or password, try again'));
-         }
-     }
-
-     function logout()
-     {
-         $this->redirect($this->Auth->logout());
-     }
-     var $name = 'User';
-     var $helpers = array('Html','Form');
-     var $components = array('Auth','Session');
-
-     function beforeFilter()
-     {
-         $this->Auth->allow("logout");
-         parent::beforeFilter();
-     }
-
-     function index() { } //Redirects to login()
-function login()
-     {
-         if ($this->Auth->login())
-         {
-             $this->redirect($this->Auth->redirect());
-         } else
-         {
-             $this->Session->setFlash(__('Invalid username or password, try again'));
-         }
-     }
-
-     function logout()
-     {
-         $this->redirect($this->Auth->logout());
-     }
- }
 
 /**
  * Components
@@ -69,11 +17,34 @@ function login()
  */
 	public $components = array('Paginator');
 	
+	public function beforeFilter() {
+    parent::beforeFilter();
+    $this->Auth->allow('add'); // Letting users register themselves
+}
+
+	public function login() {
+    if ($this->request->is('post')) {
+        if ($this->Auth->login()) {
+            return $this->redirect($this->Auth->redirect());
+        }
+        $this->Session->setFlash(__('Invalid username or password, try again'));
+    }
+}
+
+	public function logout() {
+    return $this->redirect($this->Auth->logout());
+}
+	
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
 	}
-
+	public function view($id = null) {
+        $this->User->id = $id;
+        if (!$this->User->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        $this->set('user', $this->User->read(null, $id));
 /**
  * admin_index method
  *
