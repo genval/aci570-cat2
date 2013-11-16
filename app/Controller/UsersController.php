@@ -8,6 +8,60 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+var $name = 'Users';
+     var $helpers = array('Html','Form');
+     var $components = array('Auth','Session');
+
+     function beforeFilter()
+     {
+         $this->Auth->allow("logout");
+         parent::beforeFilter();
+     }
+
+     function index() {  //Redirects to login()
+	 function login()
+     {
+         if ($this->Auth->login())
+         {
+             $this->redirect($this->Auth->redirect());
+         } else
+         {
+             $this->Session->setFlash(__('Invalid username or password, try again'));
+         }
+     }
+
+     function logout()
+     {
+         $this->redirect($this->Auth->logout());
+     }
+     var $name = 'User';
+     var $helpers = array('Html','Form');
+     var $components = array('Auth','Session');
+
+     function beforeFilter()
+     {
+         $this->Auth->allow("logout");
+         parent::beforeFilter();
+     }
+
+     function index() { } //Redirects to login()
+function login()
+     {
+         if ($this->Auth->login())
+         {
+             $this->redirect($this->Auth->redirect());
+         } else
+         {
+             $this->Session->setFlash(__('Invalid username or password, try again'));
+         }
+     }
+
+     function logout()
+     {
+         $this->redirect($this->Auth->logout());
+     }
+ }
+
 /**
  * Components
  *
@@ -60,7 +114,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-	}
+	} 
 
 /**
  * admin_edit method
@@ -106,3 +160,4 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}
+
