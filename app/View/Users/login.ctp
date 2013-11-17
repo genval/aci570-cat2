@@ -1,8 +1,7 @@
 <?php
-
-	echo $session->flash('Auth');
-	echo $form->create('User',array('action'=>'login'));
-	echo $form->input('username');
-	echo $form->input('password');
-	echo $form->end('Logeate'); 
+	echo $this->Session->flash('auth');
+    echo $this->Form->create('User', array('action' => 'login'));
+    echo $this->Form->input('username');
+    echo $this->Form->input('password');
+    echo $this->Form->end('Login');
 ?>
