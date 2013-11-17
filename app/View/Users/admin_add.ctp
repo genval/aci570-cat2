@@ -26,3 +26,15 @@
 		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
+
+<div class="users form">
+ <? Php echo $ this -> Sesión -> flash ('auth');?> 
+ <? Php echo $ this -> Form -> create ('Usuario');?> 
+ <fieldset>
+ <legend> <php echo __ ('Por favor ingrese su nombre de usuario y la contraseña');?> </ legend>
+          <? Php echo $ this -> Form -> input ('nombre de usuario');
+         echo $ this -> Form -> input ('password');
+     ?> 
+ </ Fieldset>
+ <? Php echo $ this -> Form -> end (__ ('Login'));?> 
+ </ Div>
