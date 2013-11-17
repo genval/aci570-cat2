@@ -1,4 +1,9 @@
 
+<<<<<<< HEAD
+=======
+
+<?php
+>>>>>>> eb55652866e121258036076f094c3be57da4d94d
 /**
  *
  * PHP 5
@@ -35,7 +40,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->Html->css('bootstrap');
            echo $this->html->script('bootstrap');
 
-		echo $this->('meta');
+		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
@@ -43,6 +48,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <body>
 	<div id="container">
 		<div id="header">
+<<<<<<< HEAD
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
  <?php 
        if($authUser)
@@ -59,6 +65,9 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
        }
        ?>
 		</div>
+=======
+					</div>
+>>>>>>> eb55652866e121258036076f094c3be57da4d94d
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
