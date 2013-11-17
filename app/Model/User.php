@@ -1,5 +1,8 @@
 <?php
 App::uses('AppModel', 'Model');
+
++App::uses('AuthComponent', 'Controller/Component');
+
 /**
  * User Model
  *
@@ -16,62 +19,50 @@ class User extends AppModel {
  */
 	public $validate = array(
 		'email' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'password' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'first_name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'last_name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'is_active' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'is_admin' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
+			+      'required' => array(
+ +        'rule' => array('notEmpty'),
+ +        'message' => 'A email is required'
+ +      ),
+ +      'unique' => array(
+ +        'rule' => 'isUnique',
+ +        'required' => 'create'
+ +      ),
+        'notEmpty' => array(
+          'rule' => array('notEmpty'),
+          //'message' => 'Your custom message here',
+ @@ -49,6 +57,10 @@ class User extends AppModel {
+        ),
+      ),
+      'password' => array(
+ +      'required' => array(
+ +        'rule' => array('notEmpty'),
+ +        'message' => 'A email is required'
+ +      ),
+        'notEmpty' => array(
+          'rule' => array('notEmpty'),
+          //'message' => 'Your custom message here',
+ @@ -59,6 +71,10 @@ class User extends AppModel {
+        ),
+      ),
+      'first_name' => array(
+ +      'required' => array(
+ +        'rule' => array('notEmpty'),
+ +        'message' => 'A email is required'
+ +      ),
+        'notEmpty' => array(
+          'rule' => array('notEmpty'),
+          //'message' => 'Your custom message here',
+ @@ -69,6 +85,10 @@ class User extends AppModel {
+        ),
+      ),
+      'last_name' => array(
+ +      'required' => array(
+ +        'rule' => array('notEmpty'),
+ +        'message' => 'A email is required'
+ +      ),
+        'notEmpty' => array(
+          'rule' => array('notEmpty'),
+          //'message' => 'Your custom message here',
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
