@@ -37,7 +37,7 @@ App::uses('BaseAuthenticate', 'Controller/Component/Auth');
  * @package       Cake.Controller.Component
  * @link http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html
  */
-class AuthComponent extends Component {
+class AuthenticateComponent extends Component {
 
 /**
  * Constant for 'all'

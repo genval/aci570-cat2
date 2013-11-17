@@ -55,6 +55,19 @@ class UsersController extends AppController {
  *
  * @return void
  */
+ 
+ public function admin_login() {
+    if ($this->request->is('post')) {
+        if ($this->Auth->login()) {
+            return $this->redirect($this->Auth->redirect());
+        }
+        $this->Session->setFlash(__('Invalid username or password, try again'));
+    }
+	}
+
+	public function admin_logout() {
+    return $this->redirect($this->Auth->logout());
+	}
 	public function admin_index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());

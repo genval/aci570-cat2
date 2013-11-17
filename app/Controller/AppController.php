@@ -39,7 +39,12 @@ class AppController extends Controller {
              'Auth' => array (
              'LoginRedirect' => array ('controller' => 'projects', 'action' => 'index'),
              'LogoutRedirect' => array ('controller' => 'pages', 'action' => 'display', 'home')
-         )
+         ),
+			 'authenticate' => array(
+			 'Form' => array(
+			 'fields' => array('username' => 'email')
+    )
+)
       ) ;
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
