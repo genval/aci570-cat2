@@ -15,12 +15,17 @@ class UsersController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','Auth');
+    //Agregamos el helper Html
 	
 	public function beforeFilter() {
     parent::beforeFilter();
     $this->Auth->allow('add'); // Letting users register themselves
-}
+	}
+	var $name='Users';
+    //Agregamos el componente Auth
+    
+    var $helpers    = array('Html'); 
 
 	public function login() {
     if ($this->request->is('post')) {
@@ -29,11 +34,11 @@ class UsersController extends AppController {
         }
         $this->Session->setFlash(__('Invalid username or password, try again'));
     }
-}
+	}
 
 	public function logout() {
     return $this->redirect($this->Auth->logout());
-}
+	}
 	
 	public function index() {
 		$this->User->recursive = 0;
@@ -44,7 +49,7 @@ class UsersController extends AppController {
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
-        $this->set('user', $this->User->read(null, $id));
+        $this->set('user', $this->User->read(null, $id));}
 /**
  * admin_index method
  *
@@ -130,5 +135,6 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
-
+	}
+	}
+    

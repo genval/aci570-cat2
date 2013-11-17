@@ -33,13 +33,10 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
-	public $components = array('DebugKit.Toolbar', 'Session');
 	
+	var $components = array('DebugKit.Toolbar', 'Session',
 	 
-
-     public $components = array (
-         'Session',
-         'Auth' => array (
+             'Auth' => array (
              'LoginRedirect' => array ('controller' => 'projects', 'action' => 'index'),
              'LogoutRedirect' => array ('controller' => 'pages', 'action' => 'display', 'home')
          )
