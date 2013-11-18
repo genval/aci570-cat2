@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property User $User
  * @property PaginatorComponent $Paginator
  */
-class UsersController extends AppController {
+class AdminUsersController extends AppController {
 
 
 
@@ -164,4 +164,3 @@ class UsersController extends AppController {
 		return $this->redirect($this->Auth->logout());
 	}}
 	
-    

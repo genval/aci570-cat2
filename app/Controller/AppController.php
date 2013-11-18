@@ -38,8 +38,7 @@ class AppController extends Controller {
 	 
              'Auth' => array (
              'LoginRedirect' => array ('controller' => 'projects', 'action' => 'index'),
-             'LogoutRedirect' => array ('controller' => 'pages', 'action' => 'display', 'home')
-         ),
+             'LogoutRedirect' => array ('controller' => 'pages', 'action' => 'display', 'home')),
 			 'authenticate' => array(
 			 'Form' => array(
 			 'fields' => array('username' => 'email')
@@ -52,4 +51,4 @@ class AppController extends Controller {
     }
     
 }
-//AuthComponent
+

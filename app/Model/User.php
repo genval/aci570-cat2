@@ -20,19 +20,20 @@ class User extends AppModel {
 	public $validate = array(
 		'email' => array(
 			+      'required' => array(
- +        'rule' => array('notEmpty'),
- +        'message' => 'A email is required'
- +      ),
- +      'unique' => array(
- +        'rule' => 'isUnique',
- +        'required' => 'create'
- +      ),
+        'rule' => array('notEmpty'),
+        'message' => 'A email is required'
+       ),
+      'unique' => array(
+      'rule' => 'isUnique',
+       'required' => 'create'
+     ),
         'notEmpty' => array(
           'rule' => array('notEmpty'),
+              ),
+      );
           //'message' => 'Your custom message here',
  @@ -49,6 +57,10 @@ class User extends AppModel {
-        ),
-      ),
+   
       'password' => array(
  +      'required' => array(
  +        'rule' => array('notEmpty'),
@@ -123,5 +124,7 @@ class User extends AppModel {
     }
     return true;
 	}
-	
+}	
+}
+}
 }
